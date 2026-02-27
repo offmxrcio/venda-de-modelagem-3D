@@ -13,12 +13,31 @@
 }
 
 body.light {
-  --bg-main: #f4f7fb;
+  --bg-main: #f3f4f6;
   --bg-secondary: #ffffff;
-  --text-main: #0f172a;
-  --text-secondary: #475569;
-  --card-bg: #ffffff;
-  --border-color: rgba(0, 0, 0, 0.08);
+  --bg-soft: #e5e7eb;
+
+  --text-main: #111827;
+  --text-muted: #6b7280;
+
+  --border-color: #e2e8f0;
+
+  --accent-color: #2563eb;
+  --accent-hover: #1d4ed8;
+
+  --card-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+body.light .header {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+body.light .product-card {
+  background: var(--bg-secondary);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
 }
 
 /* =========================
@@ -52,6 +71,8 @@ body {
 }
 
 .header-container {
+  width: 100%;
+  padding: 0 40px; /* controla o respiro lateral */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -76,15 +97,32 @@ body {
 }
 
 .nav a {
+  position: relative;
   text-decoration: none;
   color: var(--text-secondary);
   font-weight: 500;
-  transition: 0.3s;
+  transition: color 0.3s ease;
+  padding: 6px 0;
+}
+
+/* Linha animada */
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--neon-blue);
+  transition: width 0.3s ease;
 }
 
 .nav a:hover {
   color: var(--neon-blue);
-  text-shadow: 0 0 6px var(--neon-blue);
+}
+
+.nav a:hover::after {
+  width: 100%;
 }
 
 .header-actions {
@@ -94,18 +132,24 @@ body {
 
 .theme-toggle {
   background: transparent;
-  border: 1px solid var(--neon-blue);
+  border: none;
   color: var(--neon-blue);
-  padding: 8px 18px;
-  border-radius: 6px;
+  padding: 8px 14px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  border-radius: 20px;
+
 }
 
 .theme-toggle:hover {
   background: var(--neon-blue);
   color: #000;
   box-shadow: 0 0 15px var(--neon-blue);
+  transform: translateY(-2px);
 }
 
 .header-cta {
@@ -129,16 +173,13 @@ body {
 
 .hero {
   position: relative;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  background: var(--bg-main);
+  min-height: 95vh;
   display: flex;
   align-items: center;
-  padding: 0 8%;
+  padding-left: 8%;
+  overflow: hidden;
 }
 
-/* IMAGEM COM FADE REAL */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -146,18 +187,20 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: brightness(0.6);
-  z-index: 0;
+  filter: brightness(0.55);
 
+  /* Fade lateral elegante */
   -webkit-mask-image: linear-gradient(
-    to bottom,
-    rgba(0,0,0,1) 70%,
+    to right,
+    rgba(0,0,0,1) 55%,
+    rgba(0,0,0,0.2) 85%,
     rgba(0,0,0,0) 100%
   );
 
   mask-image: linear-gradient(
-    to bottom,
-    rgba(0,0,0,1) 70%,
+    to right,
+    rgba(0,0,0,1) 55%,
+    rgba(0,0,0,0.2) 85%,
     rgba(0,0,0,0) 100%
   );
 }
@@ -169,11 +212,11 @@ body {
 }
 
 .hero-text-box {
-  padding: 50px;
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  border: 1px solid rgba(0, 240, 255, 0.08);
+  max-width: 580px;
+  padding: 50px 0;
+  background: transparent;
+  backdrop-filter: none;
+  border: none;
 }
 
 .hero-sub {
@@ -183,14 +226,15 @@ body {
 }
 
 .hero-text-box h1 {
-  font-size: 42px;
+  font-size: 48px;
+  line-height: 1.2;
   margin: 20px 0;
-  color: #fff;
+  font-weight: 700;
 }
 
 .highlight {
   color: var(--neon-blue);
-  text-shadow: 0 0 12px var(--neon-blue);
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
 }
 
 .hero-text-box p {
@@ -234,6 +278,52 @@ body {
   box-shadow: 0 0 15px var(--neon-blue);
 }
 
+@media (max-width: 768px) {
+
+  .hero {
+    min-height: auto;
+    padding: 120px 20px 80px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-content {
+    width: 100%;
+  }
+
+  .hero-text-box {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .hero-text-box h1 {
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .hero-text-box p {
+    font-size: 15px;
+    margin-top: 15px;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    margin-top: 25px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  .hero-bg {
+    filter: brightness(0.35);
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+}
 /* =========================
    PRODUTOS
 ========================= */
@@ -295,28 +385,29 @@ body {
 }
 
 /* =========================
-   FOOTER DARK BLUE PREMIUM
+   FOOTER ULTRA PREMIUM
 ========================= */
 
 .footer {
   position: relative;
-  background: #050c18; /* azul quase preto */
-  padding-top: 70px;
-  color: #94a3b8;
+  background: linear-gradient(to bottom, #040a14, #02060d);
+  padding: 90px 0 0;
+  color: #8ea0b8;
+  font-size: 15px;
 }
 
-/* Linha superior azul escura elegante */
+/* Linha superior central elegante */
 .footer-top {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 92%;
+  width: 85%;
   height: 1px;
   background: linear-gradient(
     to right,
     transparent,
-    rgba(0, 120, 255, 0.5),
+    rgba(0, 140, 255, 0.6),
     transparent
   );
 }
@@ -324,31 +415,35 @@ body {
 /* Container */
 .footer-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: 1.4fr 1fr 1fr;
   gap: 60px;
-  padding-bottom: 60px;
-}
-
-/* Títulos */
-.footer-col h3,
-.footer-col h4 {
-  color: #e2e8f0;
-  margin-bottom: 20px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  padding-bottom: 70px;
+  align-items: start;
 }
 
 /* Logo */
 .footer-logo {
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 600;
   color: #1e90ff;
-  text-shadow: 0 0 10px rgba(30, 144, 255, 0.4);
+  margin-bottom: 20px;
+  letter-spacing: 1px;
 }
 
-/* Texto */
+/* Texto institucional */
 .footer-col p {
-  line-height: 1.7;
-  color: #7c8aa0;
+  line-height: 1.8;
+  color: #6f829c;
+  max-width: 320px;
+}
+
+/* Títulos */
+.footer-col h4 {
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 22px;
+  color: #dbe7f5;
 }
 
 /* Lista */
@@ -358,81 +453,107 @@ body {
 }
 
 .footer-col ul li {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
-/* Links */
 .footer-col ul li a {
   text-decoration: none;
-  color: #7c8aa0;
+  color: #6f829c;
   transition: 0.3s ease;
 }
 
 .footer-col ul li a:hover {
   color: #1e90ff;
-  text-shadow: 0 0 6px rgba(30, 144, 255, 0.5);
-}
-
-/* Parte inferior */
-.footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  text-align: center;
-  padding: 25px 0;
-  font-size: 14px;
-  color: #5c6b82;
-  background: #030814; /* ainda mais escuro */
+  padding-left: 6px;
 }
 
 /* =========================
-   FOOTER BUTTONS PREMIUM
+   BOTÕES ELEGANTES
 ========================= */
 
 .footer-buttons {
-  margin-top: 25px;
+  margin-top: 30px;
   display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
+  gap: 18px;
 }
 
-/* Botão base */
 .footer-btn {
-  position: relative;
-  padding: 10px 22px;
-  font-size: 14px;
-  border-radius: 6px;
-  text-decoration: none;
+  padding: 12px 26px;
+  border-radius: 8px;
   font-weight: 500;
-  letter-spacing: 0.5px;
+  font-size: 14px;
+  text-decoration: none;
   transition: 0.3s ease;
-  overflow: hidden;
+  position: relative;
 }
 
 /* Botão principal */
 .footer-btn.primary {
-  background: linear-gradient(135deg, #0a1f3a, #112b52);
-  border: 1px solid rgba(30, 144, 255, 0.4);
-  color: #e2e8f0;
-  box-shadow: 0 0 15px rgba(30, 144, 255, 0.1);
+  background: linear-gradient(135deg, #0d2a4d, #174a85);
+  border: none;
+  color: #ffffff;
+  box-shadow: 0 0 18px rgba(30, 144, 255, 0.15);
 }
 
-/* Hover principal */
 .footer-btn.primary:hover {
-  background: linear-gradient(135deg, #112b52, #163d70);
-  box-shadow: 0 0 20px rgba(30, 144, 255, 0.4);
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, #174a85, #1f63b6);
+  box-shadow: 0 0 25px rgba(30, 144, 255, 0.45);
+  transform: translateY(-3px);
 }
 
 /* Botão secundário */
 .footer-btn.secondary {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #9fb3c9;
 }
 
-/* Hover secundário */
 .footer-btn.secondary:hover {
-  border: 1px solid rgba(30, 144, 255, 0.6);
+  border-color: rgba(30, 144, 255, 0.6);
   color: #1e90ff;
-  box-shadow: 0 0 12px rgba(30, 144, 255, 0.3);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+}
+
+/* Parte inferior */
+.footer-bottom {
+  text-align: center;
+  padding: 15px 0;
+  font-size: 13px;
+  color: #50627a;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  background: #01040a;
+}
+
+.footer-cta {
+  text-align: center;
+  border-bottom: none;
+  padding-bottom: 50px;
+}
+
+.footer-cta h3 {
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.footer-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-col p {
+    max-width: 100%;
+  }
+
+  .footer-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

@@ -1,5 +1,21 @@
-const toggle = document.querySelector(".theme-toggle");
+const toggleBtn = document.querySelector(".theme-toggle");
+const body = document.body;
+const icon = document.querySelector(".theme-icon");
 
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("light");
+// Carregar tema salvo
+if (localStorage.getItem("theme") === "light") {
+  body.classList.add("light");
+  icon.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+  body.classList.toggle("light");
+
+  if (body.classList.contains("light")) {
+    icon.textContent = "☀️";
+    localStorage.setItem("theme", "light");
+  } else {
+    icon.textContent = "🌙";
+    localStorage.setItem("theme", "dark");
+  }
 });
