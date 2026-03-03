@@ -1,8 +1,8 @@
-// login.js
-const form = document.getElementById("loginForm");
+// register.js
+const registerForm = document.getElementById("registerForm");
 const message = document.getElementById("message");
 
-form.addEventListener("submit", async function(e) {
+registerForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const email = document.getElementById("email").value.trim();
@@ -11,40 +11,34 @@ form.addEventListener("submit", async function(e) {
   if (!email || !password) {
     message.textContent = "❌ Preencha todos os campos!";
     message.style.color = "red";
-    message.style.fontWeight = "bold";
     return;
   }
 
   try {
-    const response = await fetch("http://localhost:3000/login", {
+    const response = await fetch("http://localhost:3000/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      credentials: "include", // ESSENCIAL
+      credentials: "include", // importante se quiser já usar sessão
       body: JSON.stringify({ email, password })
     });
 
     const data = await response.json();
 
     if (response.ok) {
-      // salva flag no localStorage para card de login/logout
-      localStorage.setItem("loggedIn", "true");
-
-      message.textContent = data.message;
+      message.textContent = "✅ Usuário registrado com sucesso!";
       message.style.color = "green";
-      message.style.fontWeight = "bold";
 
+      // Redireciona para login após 2s
       setTimeout(() => {
-        window.location.href = "../index.html"; // ajuste o caminho se necessário
-      }, 1500);
+        window.location.href = "../html/login.html"; // ajuste caminho
+      }, 2000);
     } else {
       message.textContent = `❌ ${data.error}`;
       message.style.color = "red";
-      message.style.fontWeight = "bold";
     }
-  } catch (error) {
+  } catch (err) {
     message.textContent = "❌ Erro ao conectar com o servidor";
     message.style.color = "red";
-    message.style.fontWeight = "bold";
-    console.error(error);
+    console.error(err);
   }
 });

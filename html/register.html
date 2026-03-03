@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/register.css">
-    <title>create account</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrar Usuário</title>
+  <link rel="stylesheet" href="../css/register.css">
 </head>
 <body class="register">
 
-    <div class="register-container">
-        <h2>Crie uma conta</h2>
-        <h4>Você pode criar sua conta utilizando o google</h4>
+  <div class="register-container">
+    <h2>Crie uma conta</h2>
+    <h4>Você pode criar sua conta utilizando o Google</h4>
 
-        <form id="createForm">
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Senha" required>
-            <button type="submit">Criar conta</button>
-        </form>
+    <form id="registerForm">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Senha" required>
+      <button type="submit">Criar conta</button>
+    </form>
 
-    </div>
+    <p id="message" style="font-weight:bold;"></p>
+  </div>
+
+  <!-- Certifique-se que o caminho do JS está correto -->
+  <script src="../js/register.js" defer></script>
 </body>
 </html>

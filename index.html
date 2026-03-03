@@ -9,12 +9,11 @@
   <link rel="stylesheet" href="css/style.css">
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
 <header class="header">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
   <div class="container header-container">
     
     <!-- LOGO -->
@@ -26,55 +25,50 @@
     <nav class="nav">
       <ul>
         <li><a href="#">Início</a></li>
-        <li><a href="#produtos">Produtos</a></li>
-        <li><a href="#">Sobre</a></li>
+        <li><a href="html/moreProducts.html">Produtos</a></li>
+        <li><a href="html/aboutUs.html">Sobre</a></li>
         <li><a href="#">Contato</a></li>
       </ul>
     </nav>
 
     <!-- AÇÕES DIREITA -->
     <div class="header-actions">
-      <a href="#" class="header-cta">Orçamento</a>
+      <a href="html/requestBudget.html" class="header-cta">Orçamento</a>
 
       <button class="theme-toggle">
         <span class="theme-icon">🌙</span>
       </button>
 
-      <a href="html/login.html" class="login-icon">
-        <i class="fa-solid fa-user"></i>
-      </a>
-    </div>
+      <!-- LOGIN/LOGOUT ICON -->
+      <div class="login-icon" style="position:relative;">
+        <i class="fa-solid fa-user" id="loginIcon" style="cursor:pointer; font-size:24px;"></i>
 
+        <!-- Card escondido por padrão -->
+        <div id="loginCard" class="login-card" style="display:none; position:absolute; right:0; top:40px; background:#fff; border:1px solid #ccc; padding:10px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.2); z-index:1000;">
+            <button id="btnLogin" style="display:none; margin-bottom:5px; width:100%; padding:8px; background:#4caf50; color:#fff; border:none; border-radius:4px; cursor:pointer;">Entrar</button>
+            <button id="btnLogout" style="display:none; width:100%; padding:8px; background:#f44336; color:#fff; border:none; border-radius:4px; cursor:pointer;">Sair</button>
+        </div>
+      </div>
+
+    </div>
   </div>
 </header>
 
 <section class="hero">
-
   <img src="assets/image/3d-image.png" class="hero-bg" alt="Impressão 3D">
 
   <div class="hero-content">
-
     <div class="hero-text-box">
       <span class="hero-sub">Tecnologia & Engenharia 3D</span>
-
-      <h1>
-        Componentes Técnicos com 
-        <span class="highlight">Precisão Industrial</span>
-      </h1>
-
-      <p>
-        Desenvolvemos soluções em impressão 3D de alta performance para
-        prototipagem, indústria e aplicações técnicas exigentes.
-      </p>
+      <h1>Componentes Técnicos com <span class="highlight">Precisão Industrial</span></h1>
+      <p>Desenvolvemos soluções em impressão 3D de alta performance para prototipagem, indústria e aplicações técnicas exigentes.</p>
 
       <div class="hero-buttons">
-        <a href="#produtos" class="btn-primary">Ver Catálogo</a>
+        <a href="html/moreProducts.html" class="btn-primary">Ver Catálogo</a>
         <a href="#contato" class="btn-secondary">Solicitar Orçamento</a>
       </div>
     </div>
-
   </div>
-
 </section>
 
 <section class="products" id="produtos">
@@ -82,7 +76,6 @@
     <h2>Nossos Componentes</h2>
 
     <div class="product-grid">
-
       <div class="product-card">
         <h3>Suporte Estrutural S-210</h3>
         <p>Material: Nylon PA12</p>
@@ -103,31 +96,25 @@
         <p>Aplicações estruturais</p>
         <button>Detalhes</button>
       </div>
-
     </div>
   </div>
 </section>
 
 <footer class="footer">
-
   <div class="footer-top"></div>
-
   <div class="container footer-container">
 
     <div class="footer-col">
       <h3 class="footer-logo">Santos Engineering</h3>
-      <p>
-        Soluções técnicas em impressão 3D para aplicações industriais,
-        prototipagem e engenharia de precisão.
-      </p>
+      <p>Soluções técnicas em impressão 3D para aplicações industriais, prototipagem e engenharia de precisão.</p>
     </div>
 
     <div class="footer-col">
       <h4>Navegação</h4>
       <ul>
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Produtos</a></li>
-        <li><a href="#">Sobre</a></li>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="html/moreProducts.html">Produtos</a></li>
+        <li><a href="html/aboutUs.html">Sobre</a></li>
         <li><a href="#">Contato</a></li>
       </ul>
     </div>
@@ -141,17 +128,23 @@
       </ul>
     </div>
   </div>
+
   <div class="footer-cta">
     <h3> Pronto para transformar seu projeto em realidade?</h3>
     <div class="footer-cta-buttons">
-      <a href="#" class="footer-btn primary">Solicitar Orçamento</a>
+      <a href="html/requestBudget.html" class="footer-btn primary">Solicitar Orçamento</a>
       <a href="#" class="footer-btn secondary">Fale Conosco</a>
     </div>
   </div>
+
   <div class="footer-bottom">
     © 2026 Santos Engineering — Todos os direitos reservados.
   </div>
 </footer>
-  <script src="js/script.js"></script>
+
+<!-- Scripts -->
+<script src="js/script.js"></script>
+<script src="js/loginCard.js" defer></script>
+
 </body>
 </html>
