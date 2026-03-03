@@ -1,0 +1,176 @@
+/* =========================
+   LOGIN PAGE - PADRÃO ENGENHARIA3D
+========================= */
+:root {
+  --bg-main: #0a0f1c;
+  --bg-secondary: #111827;
+  --text-main: #ffffff;
+  --text-secondary: #cbd5e1;
+  --neon-blue: #00f0ff;
+  --neon-blue-soft: #0099ff;
+  --card-bg: #0f172a;
+  --border-color: rgba(0, 240, 255, 0.2);
+}
+
+body.light {
+  --bg-main: #f3f4f6;
+  --bg-secondary: #ffffff;
+  --bg-soft: #e5e7eb;
+
+  --text-main: #111827;
+  --text-muted: #6b7280;
+
+  --border-color: #e2e8f0;
+
+  --accent-color: #2563eb;
+  --accent-hover: #1d4ed8;
+
+  --card-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.register {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-main);
+  padding: 40px 20px;
+  transition: 0.3s ease;
+}
+
+/* Card principal */
+.register-container {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 50px 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 0 40px rgba(0, 240, 255, 0.06);
+  transition: 0.3s ease;
+}
+
+/* Título */
+.register-container h2 {
+  text-align: center;
+  margin-bottom: 35px;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+/* Subtítulo */
+.register-container h4 {
+    color: #fff;
+    text-align: center;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+.register-container input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-main);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.register-container input::placeholder {
+  color: var(--text-secondary);
+}
+
+.register-container input:focus {
+  outline: none;
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+  background: var(--card-bg);
+}
+
+/* =========================
+   BOTÃO
+========================= */
+
+.register-container button {
+  width: 71%;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    var(--neon-blue),
+    var(--neon-blue-soft)
+  );
+  color: #000;
+  transition: all 0.3s ease;
+}
+
+.register-container button:hover {
+  box-shadow: 0 0 25px var(--neon-blue);
+  transform: translateY(-3px);
+}
+
+.register-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================
+   TEXTO INFERIOR
+========================= */
+
+.register-container p {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.register-container a {
+  color: var(--neon-blue);
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.register-container a:hover {
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+}
+
+/* =========================
+   LIGHT MODE
+========================= */
+
+body.light .register-container {
+  background: var(--bg-secondary);
+  box-shadow: var(--card-shadow);
+}
+
+body.light .register-container input {
+  background: var(--bg-soft);
+}
+
+body.light .register-container input:focus {
+  background: #fff;
+}
+
+body.light .register-container button {
+  background: linear-gradient(
+    90deg,
+    var(--accent-color),
+    var(--accent-hover)
+  );
+  color: #fff;
+}
+
+body.light .register-container button:hover {
+  box-shadow: 0 0 20px var(--accent-color);
+}
