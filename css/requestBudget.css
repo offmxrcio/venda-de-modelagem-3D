@@ -1,0 +1,326 @@
+/* =========================
+   VARIÁVEIS
+========================= */
+:root {
+  --bg-main: #0a0f1c;
+  --bg-secondary: #111827;
+  --text-main: #ffffff;
+  --text-secondary: #cbd5e1;
+  --neon-blue: #00f0ff;
+  --neon-blue-soft: #0099ff;
+  --card-bg: #0f172a;
+  --border-color: rgba(0, 240, 255, 0.2);
+}
+
+body.light {
+  --bg-main: #f3f4f6;
+  --bg-secondary: #ffffff;
+  --bg-soft: #e5e7eb;
+
+  --text-main: #111827;
+  --text-muted: #6b7280;
+
+  --border-color: #e2e8f0;
+
+  --accent-color: #2563eb;
+  --accent-hover: #1d4ed8;
+
+  --card-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+body.light .header {
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+body.light .product-card {
+  background: var(--bg-secondary);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border-color);
+}
+
+/* =========================
+   BASE
+========================= */
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-main);
+  color: var(--text-main);
+  transition: 0.3s;
+  margin: 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+.header {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.header-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.logo img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  transition: 0.3s ease;
+  justify-self: start;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+.nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  justify-self: center;
+}
+
+.nav a {
+  position: relative;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 6px 0;
+}
+
+.header-actions {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+/* Linha animada */
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--neon-blue);
+  transition: width 0.3s ease;
+}
+
+.nav a:hover {
+  color: var(--neon-blue);
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.header-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: var(--neon-blue);
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  border-radius: 20px;
+
+}
+
+.theme-toggle:hover {
+  background: var(--neon-blue);
+  color: #000;
+  box-shadow: 0 0 15px var(--neon-blue);
+  transform: translateY(-2px);
+}
+
+.header-cta {
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-blue-soft));
+  padding: 8px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.header-cta:hover {
+  box-shadow: 0 0 20px var(--neon-blue);
+  transform: translateY(-2px);
+}
+/* =========================
+   CARD PRINCIPAL
+========================= */
+.requestBudget {
+  background: var(--bg-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card principal */
+.requestBudget-container {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 50px 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 0 40px rgba(0, 240, 255, 0.06);
+  transition: 0.3s ease;
+  margin: auto
+}
+
+/* Título */
+.requestBudget-container h1 {
+  text-align: center;
+  margin-bottom: 35px;
+  color: var(--text-main);
+}
+
+.requestBudget-container label {
+    margin-bottom: 10px;
+}
+
+.requestBudget-container button {
+    margin-top: 10px;
+}
+
+.requestBudget-container textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-main);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+.requestBudget-container input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-main);
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.requestBudget-container input::placeholder {
+  color: var(--text-secondary);
+}
+
+.requestBudget-container input:focus {
+  outline: none;
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+  background: var(--card-bg);
+}
+
+
+/* =========================
+   BOTÃO CENTRALIZADO
+========================= */
+
+.requestBudget-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.requestBudget-container button {
+  width: 100%;
+  max-width: 300px;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    var(--neon-blue),
+    var(--neon-blue-soft)
+  );
+  color: #000;
+  transition: all 0.3s ease;
+}
+
+.requestBudget-container button:hover {
+  box-shadow: 0 0 25px var(--neon-blue);
+  transform: translateY(-3px);
+}
+
+/* =========================
+   TEXTO INFERIOR
+========================= */
+
+.requestBudget-container p {
+  margin-top: 25px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.requestBudget-container a {
+  color: var(--neon-blue);
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.requestBudget-container a:hover {
+  text-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+}
+
+/* =========================
+   FOOTER
+========================= */
+/* Parte inferior */
+.footer-bottom {
+  text-align: center;
+  padding: 15px 0;
+  font-size: 13px;
+  color: #50627a;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  background: #01040a;
+}
+
+footer {
+  margin-top: auto;
+}
