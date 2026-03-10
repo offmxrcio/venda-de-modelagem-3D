@@ -9,7 +9,7 @@ registerForm.addEventListener("submit", async (e) => {
   const password = document.getElementById("password").value.trim();
 
   if (!email || !password) {
-    message.textContent = "❌ Preencha todos os campos!";
+    message.textContent = "Preencha todos os campos!";
     message.style.color = "red";
     return;
   }
@@ -25,7 +25,7 @@ registerForm.addEventListener("submit", async (e) => {
     const data = await response.json();
 
     if (response.ok) {
-      message.textContent = "✅ Usuário registrado com sucesso!";
+      message.textContent = "Usuário registrado com sucesso!";
       message.style.color = "green";
 
       // Redireciona para login após 2s
@@ -37,7 +37,7 @@ registerForm.addEventListener("submit", async (e) => {
       message.style.color = "red";
     }
   } catch (err) {
-    message.textContent = "❌ Erro ao conectar com o servidor";
+    message.textContent = "Erro ao conectar com o servidor";
     message.style.color = "red";
     console.error(err);
   }

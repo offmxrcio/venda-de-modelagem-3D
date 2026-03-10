@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const loggedIn = localStorage.getItem("loggedIn");
 
   if (loggedIn !== "true") {
-    alert("❌ Você precisa estar logado para acessar esta página.");
+    alert("Você precisa estar logado para acessar esta página.");
     window.location.href = "login.html"; // Redireciona para login
     return;
   }

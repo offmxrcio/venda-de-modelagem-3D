@@ -9,7 +9,7 @@ form.addEventListener("submit", async function(e) {
   const password = document.getElementById("password").value.trim();
 
   if (!email || !password) {
-    message.textContent = "❌ Preencha todos os campos!";
+    message.textContent = "Preencha todos os campos!";
     message.style.color = "red";
     message.style.fontWeight = "bold";
     return;
@@ -42,7 +42,7 @@ form.addEventListener("submit", async function(e) {
       message.style.fontWeight = "bold";
     }
   } catch (error) {
-    message.textContent = "❌ Erro ao conectar com o servidor";
+    message.textContent = "Erro ao conectar com o servidor";
     message.style.color = "red";
     message.style.fontWeight = "bold";
     console.error(error);
